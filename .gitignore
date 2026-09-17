@@ -1,0 +1,37 @@
+# Environment and sensitive configuration
+.env
+*.env
+secret_key.txt
+oidc.pem
+
+# Databases & Runtime Data
+**/pgdb/
+**/redis/
+**/media/
+**/backup/
+**/caddy/
+**/static/
+pgdb/
+redis/
+media/
+backup/
+caddy/
+static/
+
+# Python / Cache files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Output / Log files
+*.log
+output.txt
+test_out.txt
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
