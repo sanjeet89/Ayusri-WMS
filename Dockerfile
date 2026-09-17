@@ -1,14 +1,10 @@
 FROM inventree/inventree:stable
 
-# Default Database Settings for InvenTree
-ENV INVENTREE_DB_ENGINE=postgresql
-ENV INVENTREE_DB_NAME=inventree
-ENV INVENTREE_DB_USER=pguser
-ENV INVENTREE_DB_PASSWORD=pgpassword
-ENV INVENTREE_DB_HOST=inventree-db
-ENV INVENTREE_DB_PORT=5432
+# Copy custom entrypoint script to map Railway PostgreSQL variables automatically
+COPY entrypoint.sh /railway-entrypoint.sh
+RUN chmod +x /railway-entrypoint.sh
 
-# Cache Settings
+# Default Cache Settings
 ENV INVENTREE_CACHE_ENABLED=True
 ENV INVENTREE_CACHE_HOST=inventree-cache
 ENV INVENTREE_CACHE_PORT=6379
@@ -17,3 +13,5 @@ ENV INVENTREE_CACHE_PORT=6379
 ENV INVENTREE_WEB_PORT=8000
 ENV INVENTREE_PLUGINS_ENABLED=True
 ENV INVENTREE_AUTO_UPDATE=True
+
+ENTRYPOINT ["/railway-entrypoint.sh"]
